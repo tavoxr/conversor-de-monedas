@@ -32,9 +32,9 @@ public class Main {
             switch (opcionMenu){
                 case 1:{ //Convertir Moneda
                         //Obtener Datos de Usuario
-                            base_currency_code = obtenerDatoDeUsuario("Por favor, ingrese el codigo del tipo de moneda que desea convertir.");
-                            target_currency_code = obtenerDatoDeUsuario("Por favor seleccione el codigo la  moneda  a la que le gustaría realizar la conversión");
-                            amount = Double.parseDouble(obtenerDatoDeUsuario("Por favor ingresa la cantidad a convertir"));
+                            base_currency_code = obtenerDatoDeUsuario("Por favor, ingrese el codigo del tipo de moneda que desea convertir. Ejemplo: USD");
+                            target_currency_code = obtenerDatoDeUsuario("Por favor seleccione el codigo la  moneda  a la que le gustaría realizar la conversión. Ejemplo: GTQ");
+                            amount = Double.parseDouble(obtenerDatoDeUsuario("Por favor ingresa la cantidad a convertir. Ejemplo: 100.00"));
 
                          // Obtener json desde API
                             api_response = consultaAPI.obtenerDatosAPI("https://v6.exchangerate-api.com/v6/059a41228ae5116586d6e539/pair/",
@@ -64,8 +64,10 @@ public class Main {
                                JSONArray codigosJsonArray  = jsonCurrencyCodes.getJSONArray("supported_codes");
 
                                //ArrayList<Object> codigos = new ArrayList<Object>();
-
-
+                                System.out.println("Lista de codigos de monedas:");
+                                System.out.println();
+                                System.out.println("[\"CODIGO\",\"NOMBRE MONEDA\"]");
+                                System.out.println();
                                codigosJsonArray.forEach(System.out::println);
 
 
